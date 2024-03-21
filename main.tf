@@ -12,7 +12,7 @@ data "aws_ami" "app_ami" {
   }
 
   owners = ["979382823631"] # Bitnamigroup_
-}ht
+}
 
 data "aws_vpc" "default" {
   default = true
