@@ -80,6 +80,7 @@ module "alb" {
       tags = {
         Environment = "dev"
       }
+    }
  ]
 
 module "blog_sg" {
