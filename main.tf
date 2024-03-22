@@ -48,20 +48,20 @@ resource "aws_instance" "blog" {
 module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = "blog-alb"
-  vpc_id  = module.blog_vpc.vpc_id
-  subnets = module.blog_vpc.public_subnets
+  name            = "blog-alb"
+  vpc_id          = module.blog_vpc.vpc_id
+  subnets         = module.blog_vpc.public_subnets
   security_groups = module.blog_sg.security_group_id
 
 
 
   target_groups = {
     ex-instance = {
-      name_prefix      = "blog-"
-      protocol         = "HTTP"
-      port             = 80
-      target_type      = "instance"
-      target           = {
+      name_prefix = "blog-"
+      protocol    = "HTTP"
+      port        = 80
+      target_type = "instance"
+      target      = {
         my_target = {
           target_id = aws_instance.blog.id
           port      = 80
@@ -80,7 +80,7 @@ module "alb" {
       Environment = "dev"
     }
   }
-
+}
 
 module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
